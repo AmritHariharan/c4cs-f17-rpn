@@ -1,24 +1,27 @@
 #!/usr/bin/env python3
 
+import operator
+
+ops = {
+	'+': operator.add,
+	'-': operator.sub,
+	'*': operator.mul,
+}
+
 def calculate(string):
 	# create a list
 	stack = []
 
 	# tokenize input
 	for token in string.split():
-		if token == '+':
-			arg1 = stack.pop()
-			arg2 = stack.pop()
-			result = arg1 + arg2
-			stack.append(result)
-		elif token == '-':
-			arg1 = stack.pop()
-			arg2 = stack.pop()
-			result = arg2 - arg1
-			stack.append(result)
-		else:
+		try:
 			stack.append(int(token))
-
+		except ValueError:
+			arg2 = stack.pop()
+			arg1 = stack.pop()
+			function = ops[token]
+			stack.append(function(arg1, arg2))
+			
 	return stack.pop()
 
 def main():
