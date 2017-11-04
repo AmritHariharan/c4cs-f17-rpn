@@ -4,6 +4,7 @@ python:
 before_script:
  - pip install python-coveralls
 script:
+ - make cover_test
  - make
 after_success:
  - coveralls
