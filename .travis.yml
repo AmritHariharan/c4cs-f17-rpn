@@ -3,6 +3,7 @@ python:
  - "3.5"
 before_script:
  - pip install python-coveralls
+ - pip install termcolor
 script:
  - make cover_test
  - make
