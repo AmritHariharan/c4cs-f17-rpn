@@ -3,9 +3,10 @@ python:
  - "3.5"
 before_script:
  - pip install python-coveralls
+ - pip install coverage
  - pip install termcolor
 script:
- - make cover_test
+ - coverage run test_rpn.py
  - make
 after_success:
  - coveralls
